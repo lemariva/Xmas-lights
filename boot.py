@@ -27,8 +27,8 @@ os.dupterm(uart)
 pycom.heartbeat(False)
 
 # wlan access
-ssid_ = '<>'
-wp2_pass = '<>'
+ssid_ = '<your ssid>'
+wp2_pass = '<your wpa password>'
 
 # configure the WLAN subsystem in station mode (the default is AP)
 wlan = WLAN(mode=WLAN.STA)
