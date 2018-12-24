@@ -20,7 +20,7 @@ import letters
 import icons
 import gc
 from utime import sleep_ms
-from ws2812 import WS2812
+from wipyWS2812.ws2812 import WS2812
 
 matrix_width = 10
 matrix_height = 10
@@ -61,13 +61,15 @@ def lighter(color, percent):
 
 
 chain = WS2812(ledNumber=100, brightness=60)
-my_string = "MERRY XMAS AND HAPPY NEW YEAR"
-icons_label = ['goomba', 'goomba_move', 'goomba', 'goomba_move', 'mario', 'duck', 'home']
+my_string = "MERRY XMAS & HAPPY 2019!!!"
+icons_label = ['mario', 'duck', 'home', 'love']
 
 gc.collect()
 gc.mem_free()
 
 while True:
+    pycom.rgbled(0x050505)
+    print('running')
     for c in my_string:
         data = letter_to_leds(c, 'White', 0.8)
         if(data != 0):

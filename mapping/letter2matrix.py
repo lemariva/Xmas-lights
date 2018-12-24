@@ -51,7 +51,7 @@ matrix_width  = 10
 font_file = 'fonts/LiberationSerif-Bold.ttf'
 font_size = 10
 
-for c in string.ascii_uppercase:
+for c in string.ascii_uppercase+string.digits+string.punctuation:
     letter = char_to_pixels(
         c,
         path=font_file,
