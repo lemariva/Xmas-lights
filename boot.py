@@ -15,29 +15,25 @@
 #The above copyright notice and this permission notice shall be
 #included in all copies or substantial portions of the Software.
 
-# boot.py -- run on boot-up
-import os
-import pycom
-from machine import UART
-from network import WLAN
-
-uart = UART(0, 115200)
-os.dupterm(uart)
-
-pycom.heartbeat(False)
-
 # wlan access
-ssid_ = '<your ssid>'
-wp2_pass = '<your wpa password>'
+ssid_ = ''
+wp2_pass = ''
 
-# configure the WLAN subsystem in station mode (the default is AP)
-wlan = WLAN(mode=WLAN.STA)
+## ftp access
+#from ftp import ftpserver
 
-wlan.scan()     # scan for available networks
-wlan.connect(ssid=ssid_, auth=(WLAN.WPA2, wp2_pass))
+def do_connect():
+    import network
+    sta_if = network.WLAN(network.STA_IF)
+    if not sta_if.isconnected():
+        print('connecting to network...')
+        sta_if.active(True)
+        sta_if.connect(ssid_, wp2_pass)
+        while not sta_if.isconnected():
+            pass
+    print('network config:', sta_if.ifconfig())
 
-while not wlan.isconnected():
-    pycom.rgbled(0xFF0000)
-    pass
+do_connect()
 
-pycom.rgbled(0x050505)
+#ftp_server = ftpserver()
+#ftp_server.start_thread()

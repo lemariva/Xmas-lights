@@ -1,0 +1,15 @@
+{
+    "name": "Xmas-lights",
+    "stubs": {
+        "esp32-micropython-1.11.0": "1.2.0",
+        "esp32_LoBo-esp32_LoBo-3.2.24": "1.2.0"
+    },
+    "packages": {},
+    "dev-packages": {
+        "micropy-cli": "*"
+    },
+    "config": {
+        "vscode": true,
+        "pylint": false
+    }
+}
